@@ -4,12 +4,12 @@ console.log(shuffleArray)
 
 describe('shuffleArray should return an array', () => {
     test('returns an array', () => {
-        expect(shuffleArray().isArray).toBeTruthy()
+        expect(Array.isArray(shuffleArray([1, 2, 3]))).toBe(true)
     })
 })
 
-describe('shuffleArray should return array of same length each time', () => {
-    test('Arrays of equal length', () => {
-        expect(shuffleArray().toEqual(shuffleArray().length))
+describe('Test array order', () => {
+    test('Arrays order shuffle', () => {
+        expect(shuffleArray([1, 2, 3]).not.toEqual([1, 2, 3]))
     })
 })

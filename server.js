@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const {bots, playerRecord} = require('./data')
 const {shuffleArray} = require('./utils')
+const path = require('path')
 
 var Rollbar = require('rollbar')
 var rollbar = new Rollbar({
@@ -13,7 +14,9 @@ var rollbar = new Rollbar({
 
 app.use(express.json())
 app.use(express.static('public'))
-
+app.get('/', (req, res) => {
+    res.status(200).sendFile(path.join(__dirname, './public/index.html'))
+})
 
 
 app.get('/api/robots', (req, res) => {
